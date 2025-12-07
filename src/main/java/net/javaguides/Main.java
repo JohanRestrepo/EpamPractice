@@ -2,10 +2,17 @@ package net.javaguides;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Collections;
+import net.javaguides.Rectangle;
+import net.javaguides.ArrayRectangles;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    public enum SortOrder {
+        ASC,
+        DESC;
+    }
+
     public static void main(String[] args) {
         //reloj();
         //System.out.println(task1(4));
@@ -16,9 +23,13 @@ public class Main {
         //System.out.println(sumOfFibonacciNumbers(-1));
         //int[] array = new int[] {10, 10, 10, 10, 10};
         //System.out.println("result = " + maximumDistance(array));
-        int[][] matrix = { { 2, 4, 3, 3 }, { 5, 7, 8, 5 }, { 2, 4, 3, 3 }, { 5, 7, 8, 5 } };
-        transformMatrix(matrix);
-        System.out.println(Arrays.deepToString(matrix));
+        //int[][] matrix = { { 2, 4, 3, 3 }, { 5, 7, 8, 5 }, { 2, 4, 3, 3 }, { 5, 7, 8, 5 } };
+        //transformMatrix(matrix);
+        //System.out.println(Arrays.deepToString(matrix));
+        //int[] array = new int[] {15, 10, 3};
+        //System.out.println(isSorted(array,SortOrder.DESC));
+        //System.out.println(Arrays.toString(transform(array,SortOrder.DESC)));
+
 
     }
 
@@ -118,6 +129,44 @@ public class Main {
             }
         }
     }
+
+    public static boolean isSorted(int[] array, SortOrder order) {
+        boolean flag = false;
+        if(array != null && array.length > 0){
+            int [] array2 = Arrays.copyOf(array,array.length);
+            if(order == SortOrder.ASC){
+                Arrays.sort(array2);
+                flag = Arrays.equals(array2,array);
+            }else{
+                Integer[] array1 = new Integer[array.length];
+                for (int i = 0; i < array.length; i++) {
+                    array1[i] = array[i];
+                }
+                Integer[] array22 = new Integer[array2.length];
+                for (int i = 0; i < array2.length; i++) {
+                    array22[i] = array2[i];
+                }
+                Arrays.sort(array22, Collections.reverseOrder());
+                flag = Arrays.equals(array1,array22);
+            }
+        }else{
+            throw new IllegalArgumentException("The array must have valid values");
+        }
+        return flag;
+    }
+
+    public static int[] transform(int[] array, SortOrder order) {
+        if(isSorted(array,order)){
+            for (int i = 0; i < array.length; i++) {
+                array[i] += i;
+            }
+        }
+        return array;
+    }
+
+
+
+
 
 
 

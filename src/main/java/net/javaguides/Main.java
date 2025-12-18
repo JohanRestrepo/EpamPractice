@@ -1,4 +1,5 @@
 package net.javaguides;
+import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,8 +30,28 @@ public class Main {
         //int[] array = new int[] {15, 10, 3};
         //System.out.println(isSorted(array,SortOrder.DESC));
         //System.out.println(Arrays.toString(transform(array,SortOrder.DESC)));
-
-
+        //int x = 0;
+        //x = acumulacion(x);
+        //x = acumulacion(x);
+        //x = acumulacion(x);
+        //x = acumulacion(x);
+        //x = acumulacion(x);
+        //System.out.println(x);
+        BigDecimal sueldo1 = new BigDecimal("1200");
+        BigDecimal sueldo2 = new BigDecimal("900.5");
+        BigDecimal sueldo3 = new BigDecimal("2000.54");
+        BigDecimal sueldo4 = new BigDecimal("1100");
+        SalesPerson employee1 = new SalesPerson("Jorge", sueldo1, 200);
+        SalesPerson employee2 = new SalesPerson("Emanuel", sueldo2, 200);
+        Manager employee3 = new Manager("Antonio", sueldo3, 100);
+        SalesPerson employee4 = new SalesPerson("jorge", sueldo4, 200);
+        //employee3.setBonus(new BigDecimal("1000"));
+        //System.out.println(employee3.toPay());
+        Employee [] employees = {employee1,employee2,employee3,employee4};
+        Company company = new Company(employees);
+        company.giveEverybodyBonus(new BigDecimal("100"));
+        System.out.println(company.totalToPay());
+        System.out.println(company.nameMaxSalary());
     }
 
     public static void reloj(){
@@ -162,6 +183,13 @@ public class Main {
             }
         }
         return array;
+    }
+
+    public static int acumulacion(int x){
+        for (int i = 0; i < 10000000; i++) {
+            x = x + 1;
+        }
+        return x;
     }
 
 

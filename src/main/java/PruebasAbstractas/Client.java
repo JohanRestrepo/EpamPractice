@@ -71,9 +71,9 @@ public class Client implements Iterable<Deposit>{
 
     public int countPossibleToProlongDeposit(){
         int conteoProlong = 0;
-        for (int i = 0; i < depositos.length; i++) {
-            if (depositos[i] instanceof SpecialDeposit aux) {
-                if (aux.canToProlong()){
+        for(int i = 0; i < depositos.length; i++) {
+            if(depositos[i] instanceof SpecialDeposit aux) {
+                if(aux.canToProlong()){
                     conteoProlong += 1;
                 }
             }else if(depositos[i] instanceof LongDeposit aux1){

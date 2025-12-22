@@ -1,5 +1,6 @@
 package net.javaguides;
 import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Collections;
@@ -54,18 +55,21 @@ public class Main {
         //System.out.println(company.totalToPay());
         //System.out.println(company.nameMaxSalary());
         BaseDeposit deposito1 = new BaseDeposit(new BigDecimal("1000"),2);
-        SpecialDeposit deposito2 = new SpecialDeposit(new BigDecimal("1000"),3);
-        LongDeposit deposito3 = new LongDeposit(new BigDecimal("1000"),8);
-        System.out.println(deposito1.income());
-        System.out.println(deposito2.income());
-        System.out.println(deposito3.income());
+        SpecialDeposit deposito2 = new SpecialDeposit(new BigDecimal("1200"),3);
+        LongDeposit deposito3 = new LongDeposit(new BigDecimal("1000"),30);
+        BaseDeposit deposito4 = new BaseDeposit(new BigDecimal("1000"),1);
+        SpecialDeposit deposito5 = new SpecialDeposit(new BigDecimal("1500"),2);
         Client client = new Client();
         client.addDeposit(deposito1);
         client.addDeposit(deposito2);
         client.addDeposit(deposito3);
+        client.addDeposit(deposito4);
+        client.addDeposit(deposito5);
         System.out.println(client.totalIncome());
         System.out.println(client.maxIncome());
-        System.out.println(client.getIncomeByNumber(4));
+        System.out.println(client.getIncomeByNumber(3));
+        System.out.println(client.countPossibleToProlongDeposit());
+        client.sortDeposits();
 
     }
 

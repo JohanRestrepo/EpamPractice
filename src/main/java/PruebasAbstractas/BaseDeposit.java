@@ -26,4 +26,5 @@ public class BaseDeposit extends Deposit{
         aux = aux.subtract(getAmount());
         return aux.setScale(2, RoundingMode.DOWN);
     }
+
 }

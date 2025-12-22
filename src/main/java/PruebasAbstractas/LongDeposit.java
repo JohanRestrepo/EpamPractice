@@ -3,7 +3,7 @@ package PruebasAbstractas;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class LongDeposit extends Deposit{
+public class LongDeposit extends Deposit implements Prolongable{
 
     private static final BigDecimal INTEREST = new BigDecimal("0.15");
 
@@ -29,6 +29,8 @@ public class LongDeposit extends Deposit{
         return aux.setScale(2, RoundingMode.DOWN);
     }
 
-
-
+    @Override
+    public boolean canToProlong() {
+        return getPeriod()<36;
+    }
 }

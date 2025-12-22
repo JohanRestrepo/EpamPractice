@@ -2,17 +2,17 @@ package PruebasAbstractas;
 
 import java.math.BigDecimal;
 
-public abstract class Deposit {
+public abstract class Deposit implements Comparable<Deposit> {
 
     private final BigDecimal amount;
     private final int period;
 
-    protected Deposit(BigDecimal amount, int period) {
-        if(period < 0 || amount.compareTo(new BigDecimal("0")) < 0){
+    protected Deposit(BigDecimal depositAmount, int depositPeriod) {
+        if(depositPeriod <= 0 || depositAmount.compareTo(new BigDecimal("0")) <= 0){
             throw new IllegalArgumentException("the sides must be greater than 0");
         }
-        this.period = period;
-        this.amount = amount;
+        this.period = depositPeriod;
+        this.amount = depositAmount;
     }
 
     public BigDecimal getAmount() {
@@ -24,4 +24,9 @@ public abstract class Deposit {
     }
 
     public abstract BigDecimal income();
+
+    @Override
+    public int compareTo(Deposit other) {
+        return this.income().add(this.amount).compareTo(other.income().add(other.amount));
+    }
 }
